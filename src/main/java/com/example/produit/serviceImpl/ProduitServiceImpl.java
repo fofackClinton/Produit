@@ -24,18 +24,14 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public String getProduitById(Long id) {
-        Produit produit = produitRepository.findById(id).orElse(null);
-        return produit != null ? produit.toString() : "Produit not found";
+    public Produit getProduitById(Long id) {
+         return produitRepository.findById(id).orElse(null);
     }
 
     @Override
     public void deleteProduit(Long id) {
         produitRepository.deleteById(id);
     }
-
-        
-    
 
     @Override
     public List<Produit> getAllProduits() {
@@ -51,7 +47,6 @@ public class ProduitServiceImpl implements ProduitService {
     public List<Produit> findProduitsByNom(String nom) {
         return produitRepository.findByNomProduit(nom);
     }
-
 
     @Override
     public Produit updateProduit(Long id, Produit produit) {

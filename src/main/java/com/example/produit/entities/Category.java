@@ -1,5 +1,6 @@
 package com.example.produit.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -8,9 +9,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-public class Category {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,51 +34,5 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Produit> produits;
 
-    @Override
-    public String toString() {
-        return "Category [idCat=" + idCat + ", nomCat=" + nomCat + ", descriptionCat=" + descriptionCat + ", produits="
-                + produits + "]";
-    }
-
-    public Category(String descriptionCat, Long idCat, String nomCat, List<Produit> produits) {
-        this.descriptionCat = descriptionCat;
-        this.idCat = idCat;
-        this.nomCat = nomCat;
-        this.produits = produits;
-    }
-
-    public Long getIdCat() {
-        return idCat;
-    }
-
-    public void setIdCat(Long idCat) {
-        this.idCat = idCat;
-    }
-
-    public String getNomCat() {
-        return nomCat;
-    }
-
-    public void setNomCat(String nomCat) {
-        this.nomCat = nomCat;
-    }
-
-    public String getDescriptionCat() {
-        return descriptionCat;
-    }
-
-    public void setDescriptionCat(String descriptionCat) {
-        this.descriptionCat = descriptionCat;
-    }
-
-    public List<Produit> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
-    }
-
-   
 
 }

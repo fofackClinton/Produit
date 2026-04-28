@@ -9,8 +9,8 @@ public interface ProduitService {
 
     Produit saveProduit(Produit produit);
 
-    String getProduitById(Long id);
-
+    Produit getProduitById(Long id);
+    
     void deleteProduit(Long id);
 
     List<Produit> getAllProduits();
